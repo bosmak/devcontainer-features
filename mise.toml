@@ -1,0 +1,5 @@
+[tools]
+node = "22"
+
+[tasks]
+docs = "devcontainer features generate-docs -p . -n bosmak/devcontainer-features"

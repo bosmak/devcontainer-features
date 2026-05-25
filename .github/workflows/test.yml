@@ -12,6 +12,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Install devcontainer CLI
+        run: npm install -g @devcontainers/cli
+
       - name: Test Features
         run: devcontainer features test --skip-scenarios -f pi -i mcr.microsoft.com/devcontainers/base:ubuntu ./src
 

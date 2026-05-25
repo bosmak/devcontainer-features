@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# Pre-commit hook: regenerate feature docs when src/ changes
+set -e
+
+# Only run if src/** files are staged
+if ! git diff --cached --name-only -- 'src/**' | grep -q .; then
+  exit 0
+fi
+
+echo "==> Generating feature documentation..."
+devcontainer features generate-docs -p . -n bosmak/devcontainer-features
+git add '*.md'
+exit 0

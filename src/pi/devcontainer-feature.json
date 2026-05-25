@@ -1,0 +1,33 @@
+{
+    "name": "Pi Coding Agent",
+    "id": "pi",
+    "version": "1.0.0",
+    "description": "Installs pi, the minimal terminal coding agent harness. Mounts host ~/.pi/agent into the container to share settings, sessions, extensions, skills, and themes.",
+    "options": {
+        "version": {
+            "type": "string",
+            "proposals": [
+                "latest"
+            ],
+            "default": "latest",
+            "description": "Version of @earendil-works/pi-coding-agent to install. Use 'latest' for the most recent release, or pin to a specific semver (e.g. 0.75.5)."
+        }
+    },
+    "mounts": [
+        {
+            "source": "${localEnv:HOME}/.pi/agent",
+            "target": "/usr/local/share/pi-agent-config",
+            "type": "bind"
+        }
+    ],
+    "dependsOn": {
+        "ghcr.io/devcontainers/features/node:1": {}
+    },
+    "installsAfter": [
+        "ghcr.io/devcontainers/features/node"
+    ],
+    "containerEnv": {
+        "PI_CODING_AGENT_DIR": "/usr/local/share/pi-agent-config",
+        "PATH": "/usr/local/share/npm-global/bin:${PATH}"
+    }
+}

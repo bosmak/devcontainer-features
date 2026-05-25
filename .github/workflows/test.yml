@@ -1,0 +1,19 @@
+name: Test Features
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Test Features
+        run: devcontainer features test --skip-scenarios -f pi -i mcr.microsoft.com/devcontainers/base:ubuntu ./src
+
+      - name: Run Scenario Tests
+        run: devcontainer features test -f pi -i mcr.microsoft.com/devcontainers/base:ubuntu ./src

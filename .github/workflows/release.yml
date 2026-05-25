@@ -1,20 +1,21 @@
-name: Release Features
-
+name: "Release Features"
 on:
-  release:
-    types: [published]
-
-permissions:
-  contents: write
-  packages: write
+  workflow_dispatch:
+  push:
+    branches:
+      - main
 
 jobs:
-  publish:
+  deploy:
+    if: ${{ github.ref == 'refs/heads/main' }}
     runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: read
     steps:
       - uses: actions/checkout@v4
 
-      - name: "Publish Features"
+      - name: "Publish"
         uses: devcontainers/action@v1
         with:
           publish-features: "true"

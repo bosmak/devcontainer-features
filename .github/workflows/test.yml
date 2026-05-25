@@ -16,7 +16,7 @@ jobs:
         run: npm install -g @devcontainers/cli
 
       - name: Test Features
-        run: devcontainer features test --skip-scenarios -f pi -i mcr.microsoft.com/devcontainers/base:ubuntu ./src
+        run: devcontainer features test --skip-scenarios -f pi -i mcr.microsoft.com/devcontainers/base:ubuntu .
 
       - name: Run Scenario Tests
-        run: devcontainer features test -f pi -i mcr.microsoft.com/devcontainers/base:ubuntu ./src
+        run: devcontainer features test -f pi -i mcr.microsoft.com/devcontainers/base:ubuntu .
